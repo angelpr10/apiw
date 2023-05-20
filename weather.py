@@ -1,5 +1,7 @@
 import requests
 import json
+from jinja2 import Template, Environment, FileSystemLoader
+
 
 # Ingresa tu clave de API de OpenWeatherMap aquí
 api_key = '98d826f5837000880cabecb7c8d7df9f'
@@ -36,4 +38,15 @@ if response.status_code == 200:
     print(f'Descripción: {descripcion}')
 else:
     print('Error al realizar la solicitud a la API')
+    
+# Crea un entorno de Jinja2 con la ruta al directorio que contiene el archivo HTML
+env = Environment(loader=FileSystemLoader('.'))
+template = env.get_template('index.html')
+
+# Renderiza la plantilla con los datos del clima
+output = template.render(clima=clima)
+
+# Guarda el resultado en un archivo HTML
+with open('output.html', 'w') as file:
+    file.write(output)
 
