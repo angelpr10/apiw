@@ -11,6 +11,12 @@ ciudad = 'santander'
 url = f'http://api.openweathermap.org/data/2.5/weather?q={ciudad}&appid={api_key}'
 response = requests.get(url)
 
+clima = {
+    'temperatura': round(temperatura_celsius),
+    'humedad': humedad,
+    'descripcion': descripcion
+}
+
 # Comprueba si la solicitud fue exitosa (código de estado 200)
 if response.status_code == 200:
     # Convierte la respuesta en formato JSON a un objeto Python
