@@ -47,6 +47,6 @@ template = env.get_template('index.html')
 output = template.render(clima=clima)
 
 # Guarda el resultado en un archivo HTML
-with open('output.html', 'w') as file:
+with open('index.html', 'w') as file:
     file.write(output)
 
